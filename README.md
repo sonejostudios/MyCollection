@@ -5,7 +5,7 @@ A Simple Collection Browser for Movies, Music, etc. Netflix style for local file
 
 __Description:__
 
-MyCollection is a simple and small tool to show collections of e.g. Movies in a nice way, showing posters as buttons. It will create one button for each folder and show them in a scrollable and searchable grid of items. It is written in Godot/GDScript.
+MyCollection is a simple and small tool to show collections of things (e.g. movies) in a nice way, showing posters as buttons. It will create one button for each folder and show them in a scrollable and searchable grid of items. It is written in Godot/GDScript.
 
 
 ![screenshot](https://github.com/sonejostudios/MyCollection/blob/main/MyCollection.png "MyCollection")
