@@ -1,0 +1,7 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1690739229
+export_presets.cfg::TextFile::-1::1690739159::0::1::::<><>::
+icon.png::CompressedTexture2D::7719155033792699003::1690734944::1690734944::1::::<><>::
+icon.svg::CompressedTexture2D::8700913180170548897::1690734944::1690734944::1::::<><>::
+main.gd::GDScript::-1::1690739182::0::1::::<>Control<>::
+main.tscn::PackedScene::5741918574439295073::1690739182::0::1::::<><>::res://main.gd
