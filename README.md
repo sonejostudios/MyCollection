@@ -1,5 +1,6 @@
 # MyCollection
-A Simple Collection Browser for Movies, Music, etc.
+A Simple Collection Browser for Movies, Music, etc. Netflix style for local files :)
+
 
 
 __Description:__
@@ -23,9 +24,9 @@ __Main Features:__
 
 __Installation:__
 
-Just copy the application file to your collection root folder and run it.
-On Linux, copy and run "MyCollection"
-On Windows, copy and run "MyCollection.exe"
+Just copy the application file (see Releases) to your collection root folder and run it.
+* On Linux, copy and run "MyCollection"
+* On Windows, copy and run "MyCollection.exe"
 
 
 __Usage:__
