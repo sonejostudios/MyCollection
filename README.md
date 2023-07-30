@@ -70,10 +70,10 @@ Depending of your screen resolution and the type of items, it could be interesti
 
 Window mode:
 
-0: windowed (default)
-1: minimized
-2: maximized
-3: fullscreen (use alt+F4 to close the app)
+* 0: windowed (default)
+* 1: minimized
+* 2: maximized
+* 3: fullscreen (use alt+F4 to close the app)
 
 Collection path:
 
