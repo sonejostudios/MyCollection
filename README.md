@@ -7,7 +7,7 @@ __Description:__
 MyCollection is a simple and small tool to show collections of e.g. Movies in a nice way, showing posters as buttons. It will create one button for each folder and show them in a scrollable and searchable grid of items. It is written in Godot/GDScript.
 
 
-![screenshot](https://github.com/sonejostudios/CDMasterTool/blob/master/CDMasterTool-135.png "MyCollection")
+![screenshot](https://github.com/sonejostudios/MyCollection/blob/main/MyCollection.png "MyCollection")
 
 
 
@@ -54,23 +54,28 @@ You can change:
 
 This file's name must be "MyCollection.cfg" and it should be a plain text file with json content:
 
+```
 {
 "grid_columns": 5,
 "grid_rows": 2,
 "window_mode": 0,
 "collection_path": "",
 }
+```
 
 Grid columns and rows:
+
 Depending of your screen resolution and the type of items, it could be interesting to change the amount of columns and rows. Try around what fits best. 5 and 2 is a good choice for movie posters, for music allbum covers try 7 and 3.
 
 Window mode:
+
 0: windowed
 1: minimized
 2: maximized
 3: fullscreen (use alt+F4 to close the app)
 
-Collection path: 
+Collection path:
+
 If empty, it will take the application's path. 
 On Linux, use something like "/path/to/my/collection"
 On Windows, use something link "C:\path\to\my\collection"
