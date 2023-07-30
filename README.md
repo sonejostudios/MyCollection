@@ -15,8 +15,8 @@ __Main Features:__
 
 * Really simple and straight forward
 * Open its own location as main folder
-* Show the first image file
-* Search/Filter titles
+* Show the first image file found in folder
+* Search/filter titles
 * Tooltips with the folder's files
 * Optional config file
 
@@ -65,11 +65,11 @@ This file's name must be "MyCollection.cfg" and it should be a plain text file w
 
 Grid columns and rows:
 
-Depending of your screen resolution and the type of items, it could be interesting to change the amount of columns and rows. Try around what fits best. 5 and 2 is a good choice for movie posters, for music allbum covers try 7 and 3.
+Depending of your screen resolution and the type of items, it could be interesting to change the amount of columns and rows. Try around what fits best. 5 and 2 is a good choice for movie posters, for music album covers try 7 and 3.
 
 Window mode:
 
-0: windowed
+0: windowed (default)
 1: minimized
 2: maximized
 3: fullscreen (use alt+F4 to close the app)
@@ -80,4 +80,5 @@ If empty, it will take the application's path.
 On Linux, use something like "/path/to/my/collection"
 On Windows, use something link "C:\path\to\my\collection"
 
+If something went wrong, just delete the config file and restart the app.
 
