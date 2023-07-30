@@ -16,8 +16,7 @@ extends Control
 @onready var searchbar = $VBoxContainer/MarginContainer/LineEdit
 @onready var searching_wait = $ColorRect
 
-#@onready var path = "/media/vince/TOSHIBAEXT2/Film Collection"
-@onready var path = "/media/sda7/Programming/Godot4/movies"
+@onready var path = "/"
 
 
 
