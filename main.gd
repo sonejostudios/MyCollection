@@ -11,14 +11,11 @@ extends Control
 @onready var grid_columns = 5
 @onready var grid_rows = 2
 
-	
 @onready var grid = $VBoxContainer/ScrollContainer/MarginContainer/GridContainer
 @onready var searchbar = $VBoxContainer/MarginContainer/LineEdit
 @onready var searching_wait = $ColorRect
 
 @onready var path = "/"
-
-
 
 
 func _ready():
@@ -52,20 +49,16 @@ func _ready():
 	set_sizes()
 	
 
-	
-
-
 func get_app_path():
 	#var path = ""
 	if OS.has_feature("editor"):
-		#path = ProjectSettings.globalize_path("res://")
+		#path = ProjectSettings.globalize_path("res://") # use this to set it to res://
 		pass
 	else:
 		path = OS.get_executable_path().get_base_dir()
 	path = path.path_join("") # + "/"
 	print(path)
 	return path
-
 
 
 func read_config(config_path):
@@ -81,9 +74,6 @@ func read_config(config_path):
 			path = new_path
 		
 	
-	
-	
-	
 func set_sizes():
 	grid.columns = grid_columns
 	window_size = DisplayServer.window_get_size()
@@ -92,7 +82,6 @@ func set_sizes():
 		child.custom_minimum_size.y = window_size.y/grid_rows - 45
 		
 
-	
 func get_files(path, what):
 	var folders = []
 	var files = []
@@ -115,15 +104,13 @@ func get_files(path, what):
 	else:
 		return folders + files
 	
-
-
+	
 func create_movie_title(movie_title):
 		var factor = len(movie_title)/24.0
 		if factor > 1:
 			for i in range(int(factor)):
 				movie_title = movie_title.insert(24*(i+1), "\n")
 		return movie_title
-	
 	
 	
 func load_movies(movie_list):
@@ -174,22 +161,15 @@ func load_movies(movie_list):
 		# create button
 		grid.add_child(button)
 		
-		
 	# set button size
 	set_sizes()
 	
-
-	
-	
-
 
 func open_folder(path):
 	print("Open: " + path)
 	OS.shell_open(path)
 	
 	
-	
-
 func _on_search_text_changed(new_text):
 	if search_wait == true:
 		# show loading screen
@@ -200,7 +180,6 @@ func _on_search_text_changed(new_text):
 		await get_tree().create_timer(0.75).timeout
 		on_search(searchbar.text)
 		search_wait = true
-
 
 
 func on_search(new_text):
@@ -222,7 +201,6 @@ func on_search(new_text):
 	searching_wait.visible = false
 	
 	
-
 # shortcuts
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_fullscreen"):

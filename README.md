@@ -31,7 +31,8 @@ Just copy the application file (see Releases) to your collection root folder and
 
 __Usage:__
 
-After launching it, it will scan its own folder and show a grid of buttons with images and titles. E.g. for a movie collection, it will show the posters and the folder's titles.
+After launching it, it will scan its own folder (this can take time depending on the size of your collection/) and show a grid of buttons with images (only .jpg and .png) and titles. 
+E.g. for a movie collection, it will show the posters and the folder's titles.
 Hovering the button will show the folder's files in the tooltip.
 Left click on the button will open the corresponding folder.
 You can search for items with the search bar (the search bar gets focus on start).
@@ -77,9 +78,24 @@ Window mode:
 
 Collection path:
 
-If empty, it will take the application's path. 
-On Linux, use something like "/path/to/my/collection"
-On Windows, use something link "C:\path\to\my\collection"
+If empty, it will take the application's path. Otherwise, to set up  a default path:
+* On Linux, use something like "/path/to/my/collection"
+* On Windows, use something link "C:\path\to\my\collection"
 
 If something went wrong, just delete the config file and restart the app.
+
+
+__Optional script to create one folders for each file (Linux only):__
+
+If your collection is not based on folders, but on files, you can use this little help bash script: CreateFolders4Files.sh.
+For each file it will create a folder with the file name (without extention) and move the file into it. Be careful, this can't be undone. Maybe try in a test folder before running it on your full collection.
+To run it, copy CreateFolders4Files.sh to you collection folder, open a terminal there and type:
+
+```
+sh CreateFolders4Files.sh
+```
+
+
+
+
 
