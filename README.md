@@ -18,6 +18,7 @@ __Main Features:__
 * Open its own location as main folder
 * Show the first image file found in folder
 * Search/filter titles
+* Show amount of item found
 * Tooltips with the folder's files
 * Optional config file
 

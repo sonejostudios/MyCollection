@@ -1,7 +1,7 @@
 extends Control
 
 @onready var app_name = "MyCollection"
-@onready var version = "1.0.0"
+@onready var version = "1.0.1"
 
 @onready var screen_size = DisplayServer.screen_get_size()
 @onready var window_size = DisplayServer.window_get_size()
@@ -12,10 +12,11 @@ extends Control
 @onready var grid_rows = 2
 
 @onready var grid = $VBoxContainer/ScrollContainer/MarginContainer/GridContainer
-@onready var searchbar = $VBoxContainer/MarginContainer/LineEdit
+@onready var searchbar = $VBoxContainer/MarginContainer/HBoxContainer/LineEdit
+@onready var items_amount = $VBoxContainer/MarginContainer/HBoxContainer/Label
 @onready var searching_wait = $ColorRect
 
-@onready var path = "/"
+@onready var path = "/media/sda7/Programming/Godot4/movies"
 
 
 func _ready():
@@ -49,6 +50,7 @@ func _ready():
 	set_sizes()
 	
 
+
 func get_app_path():
 	#var path = ""
 	if OS.has_feature("editor"):
@@ -59,6 +61,7 @@ func get_app_path():
 	path = path.path_join("") # + "/"
 	print(path)
 	return path
+
 
 
 func read_config(config_path):
@@ -74,12 +77,14 @@ func read_config(config_path):
 			path = new_path
 		
 	
+	
 func set_sizes():
 	grid.columns = grid_columns
 	window_size = DisplayServer.window_get_size()
 	for child in grid.get_children():
 		child.custom_minimum_size.x = window_size.x/grid_columns - 30
-		child.custom_minimum_size.y = window_size.y/grid_rows - 45
+		child.custom_minimum_size.y = window_size.y/grid_rows - 44#45
+		
 		
 
 func get_files(path, what):
@@ -105,6 +110,7 @@ func get_files(path, what):
 		return folders + files
 	
 	
+	
 func create_movie_title(movie_title):
 		var factor = len(movie_title)/24.0
 		if factor > 1:
@@ -113,10 +119,11 @@ func create_movie_title(movie_title):
 		return movie_title
 	
 	
+	
 func load_movies(movie_list):
-	# clear grid
+	# clear grid straight away
 	for child in grid.get_children():
-		child.queue_free()
+		child.free()
 		
 	# show movies
 	for movie in movie_list:
@@ -164,10 +171,16 @@ func load_movies(movie_list):
 	# set button size
 	set_sizes()
 	
+	#show amount of items
+	count_visible_items()
+
+	
+
 
 func open_folder(path):
 	print("Open: " + path)
 	OS.shell_open(path)
+	
 	
 	
 func _on_search_text_changed(new_text):
@@ -180,6 +193,7 @@ func _on_search_text_changed(new_text):
 		await get_tree().create_timer(0.75).timeout
 		on_search(searchbar.text)
 		search_wait = true
+
 
 
 func on_search(new_text):
@@ -199,6 +213,20 @@ func on_search(new_text):
 				
 	# hide loading screen
 	searching_wait.visible = false
+	
+	#show amount of items
+	count_visible_items()
+	
+	
+	
+	
+func count_visible_items():
+	var items_visible = 0
+	for i in grid.get_children():
+		if i.visible == true:
+			items_visible += 1
+	items_amount.text = str(items_visible)
+	
 	
 	
 # shortcuts
