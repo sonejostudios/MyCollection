@@ -1,7 +1,7 @@
 extends Control
 
 @onready var app_name = "MyCollection"
-@onready var version = "1.0.1"
+@onready var version = "1.0.2"
 
 @onready var screen_size = DisplayServer.screen_get_size()
 @onready var window_size = DisplayServer.window_get_size()
@@ -12,8 +12,8 @@ extends Control
 @onready var grid_rows = 2
 
 @onready var grid = $VBoxContainer/ScrollContainer/MarginContainer/GridContainer
-@onready var searchbar = $VBoxContainer/MarginContainer/HBoxContainer/LineEdit
-@onready var items_amount = $VBoxContainer/MarginContainer/HBoxContainer/Label
+@onready var searchbar = $VBoxContainer/MarginContainer/HBoxContainer/LineEditSearch
+@onready var items_amount = $VBoxContainer/MarginContainer/HBoxContainer/LabelAmount
 @onready var searching_wait = $ColorRect
 
 @onready var path = "/media/sda7/Programming/Godot4/movies"
@@ -35,6 +35,12 @@ func _ready():
 	# get movie list folders
 	movie_list = get_files(path, "folders")
 	print(movie_list)
+	
+	# show error if nothing found
+	if movie_list == []:
+		searching_wait.get_node("Label").text = "No folder found"
+		searching_wait.visible = true
+	
 	
 	#show movies
 	load_movies(movie_list)
@@ -102,6 +108,7 @@ func get_files(path, what):
 			item = dir.get_next()
 		folders.sort()
 		files.sort()
+		
 	if what == "folders":
 		return folders
 	elif what == "files":
@@ -112,12 +119,13 @@ func get_files(path, what):
 	
 	
 func create_movie_title(movie_title):
+		## old method split at 24 char
 		var factor = len(movie_title)/24.0
 		if factor > 1:
 			for i in range(int(factor)):
 				movie_title = movie_title.insert(24*(i+1), "\n")
 		return movie_title
-	
+
 	
 	
 func load_movies(movie_list):
@@ -171,7 +179,7 @@ func load_movies(movie_list):
 	# set button size
 	set_sizes()
 	
-	#show amount of items
+	#show amount of visible items
 	count_visible_items()
 
 	
@@ -214,7 +222,7 @@ func on_search(new_text):
 	# hide loading screen
 	searching_wait.visible = false
 	
-	#show amount of items
+	#show amount of visible items
 	count_visible_items()
 	
 	
@@ -239,3 +247,19 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if event.is_action_pressed("escape"):
 		searchbar.clear()
+		searchbar.grab_focus()
+		$VBoxContainer/ScrollContainer.scroll_vertical = 0
+
+
+# press ui_down from search bar focuses first item
+func _input(event: InputEvent) -> void:
+	if event.is_action_released("ui_down"):
+		if searchbar.has_focus():
+			for i in grid.get_children():
+				if i.visible == true:
+					i.grab_focus()
+					break
+
+
+
+

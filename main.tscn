@@ -34,14 +34,15 @@ theme_override_constants/margin_bottom = 10
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="LineEditSearch" type="LineEdit" parent="VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 1
 theme_override_styles/normal = SubResource("StyleBoxEmpty_niei5")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_hcchw")
 placeholder_text = "Search..."
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="LabelAmount" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
 modulate = Color(0.647059, 0.647059, 0.647059, 1)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -50,6 +51,7 @@ text = "0"
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+follow_focus = true
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
@@ -71,7 +73,7 @@ columns = 5
 [node name="TestButton" type="Button" parent="VBoxContainer/ScrollContainer/MarginContainer/GridContainer"]
 custom_minimum_size = Vector2(0, 330)
 layout_mode = 2
-text = "test button"
+text = "test button bla bla bla bfdjodshfdhds"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -94,4 +96,4 @@ text = "Loading..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="text_changed" from="VBoxContainer/MarginContainer/HBoxContainer/LineEdit" to="." method="_on_search_text_changed"]
+[connection signal="text_changed" from="VBoxContainer/MarginContainer/HBoxContainer/LineEditSearch" to="." method="_on_search_text_changed"]
